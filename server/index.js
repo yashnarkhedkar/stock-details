@@ -14,25 +14,25 @@ app.listen(PORT, () => {
 app.get('/api/sme-data', async (req, res) => {
   try {
     console.log("Getting sme data");
-    const headers = {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    };
+    // const headers = {
+    //   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    // };
     const url = "https://nsearchives.nseindia.com/archives/sme/bhavcopy/sme190824.csv";
     const response = await axios.get(url, { headers, responseType: 'text' });
     res.setHeader('Content-Type', 'text/csv');
     res.send(response.data);
   } catch (error) {
-    console.error('Error fetching SME data:', error.message);
-    res.status(500).send('Error fetching SME data');
+    console.error('Error fetching SME data:', error);
+    res.status(500).send(`Error fetching SME data ${error}`);
   }
 });
 
 app.get('/api/cm52-data', async (req, res) => {
   try {
     console.log("Getting cm52 data");
-    const headers = {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    };
+    // const headers = {
+    //   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    // };
     const response = await axios.get(
       'https://nsearchives.nseindia.com/content/CM_52_wk_High_low_19082024.csv',
       { headers, responseType: 'text' }
@@ -40,7 +40,7 @@ app.get('/api/cm52-data', async (req, res) => {
     res.setHeader('Content-Type', 'text/csv');
     res.send(response.data);
   } catch (error) {
-    console.error('Error fetching CM 52 data:', error.message);
-    res.status(500).send('Error fetching CM 52 data');
+    console.error(`Error fetching CM 52 data: ${error}`);
+    res.status(500).send(`Error fetching CM 52 data ${error}`);
   }
 });
