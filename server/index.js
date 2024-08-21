@@ -13,6 +13,7 @@ app.listen(PORT, () => {
 
 app.get('/api/sme-data', async (req, res) => {
   try {
+    console.log("Getting sme data");
     const headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     };
@@ -28,6 +29,7 @@ app.get('/api/sme-data', async (req, res) => {
 
 app.get('/api/cm52-data', async (req, res) => {
   try {
+    console.log("Getting cm52 data");
     const headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     };
