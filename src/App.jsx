@@ -14,7 +14,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         // Fetch SME data
-        const smeResponse = await axios.get(`${process.env.PORTAL_HOST_URL}/api/sme-data`);
+        const smeResponse = await axios.get(`${import.meta.env.VITE_PORTAL_HOST_URL}/api/sme-data`);
         Papa.parse(smeResponse.data, {
           header: true,
           skipEmptyLines: true,
@@ -41,7 +41,7 @@ const App = () => {
         });
 
         // Fetch CM52 data
-        const cm52Response = await axios.get(`${process.env.PORTAL_HOST_URL}/api/sme-data`);
+        const cm52Response = await axios.get(`${import.meta.env.VITE_PORTAL_HOST_URL}/api/cm52-data`);
         Papa.parse(cm52Response.data, {
           header: true,
           skipEmptyLines: true,
